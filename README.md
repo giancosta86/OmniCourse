@@ -19,7 +19,7 @@ OmniCourse is designed to be the kernel of the **learning area** of my [personal
 ## Installation
 
 ```bash
-npm install --save @giancosta86/omnicourse
+npm install @giancosta86/omnicourse
 ```
 
 OmniCourse is currently _transpiled_ and _polyfilled_ to _ES5_ via **Babel** with **core-js@2** and **regenerator**. In particular, it is designed to be compatible with:
