@@ -1,6 +1,6 @@
 {
   "name": "@giancosta86/omnicourse",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "React component for drill-down chart analysis of online courses",
   "main": "lib/index.js",
   "files": [
