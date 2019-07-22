@@ -2,7 +2,7 @@
 
 _React component for drill-down chart analysis of online courses_
 
-[![NPM](https://img.shields.io/npm/v/@giancosta86/omnicourse.svg)](https://www.npmjs.com/package/@giancosta86/omnicourse)
+[![NPM](https://img.shields.io/npm/v/@giancosta86/omnicourse.svg)](https://www.npmjs.com/package/@giancosta86/omnicourse) [![Build Status](https://travis-ci.org/giancosta86/OmniCourse.svg?branch=master)](https://travis-ci.org/giancosta86/OmniCourse)
 
 ![Screenshot](Screenshot.png)
 
