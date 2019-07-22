@@ -62,7 +62,7 @@ To see a more concrete example in action, please refer to its minimalist [test w
 For further details, the following pseudocode describes the DOM tree created by the **CourseReport** component:
 
 ```scss
-div.<CourseReport className property > {
+div.<CourseReport className property> {
   nav.path-bar {
     label.root-label
     select.root-select
@@ -70,7 +70,7 @@ div.<CourseReport className property > {
     span.leaf.path-component
   }
 
-  Chart.course-chart
+  .course-chart
 
   div.table-container {
     table.course-table {
