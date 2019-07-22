@@ -1,0 +1,7 @@
+{
+  "presets": [
+    ["@babel/env", { "corejs": 2, "useBuiltIns": "usage" }],
+    "@babel/react"
+  ],
+  "sourceMaps": "inline"
+}

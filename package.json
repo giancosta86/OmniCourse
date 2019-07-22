@@ -1,0 +1,52 @@
+{
+  "name": "@giancosta86/omnicourse",
+  "version": "0.9.0",
+  "description": "React component for drill-down chart analysis of online courses",
+  "main": "lib/index.js",
+  "files": [
+    "lib/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf lib && rm -f giancosta86-*.tgz",
+    "format": "prettier --write **/*.{js,jsx,scss,json}",
+    "build": "babel ./src --out-dir ./lib",
+    "test": "npm run build && jest --verbose",
+    "test:pack": "npm run clean && npm test && npm pack",
+    "prepublishOnly": "npm test"
+  },
+  "author": {
+    "name": "Gianluca Costa",
+    "url": "https://gianlucacosta.info/",
+    "email": "gianluca@gianlucacosta.info"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giancosta86/OmniCourse.git"
+  },
+  "homepage": "https://github.com/giancosta86/OmniCourse#readme",
+  "bugs": {
+    "url": "https://github.com/giancosta86/OmniCourse/issues"
+  },
+  "dependencies": {
+    "core-js": "^2.6.9",
+    "react-google-charts": "^3.0.14",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
