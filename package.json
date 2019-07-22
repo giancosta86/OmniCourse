@@ -28,6 +28,18 @@
   "bugs": {
     "url": "https://github.com/giancosta86/OmniCourse/issues"
   },
+  "keywords": [
+    "React",
+    "component",
+    "courses",
+    "charts",
+    "tables",
+    "drill-down",
+    "analysis",
+    "duration",
+    "certificate",
+    "taxonomy"
+  ],
   "dependencies": {
     "core-js": "^2.6.9",
     "react-google-charts": "^3.0.14",
