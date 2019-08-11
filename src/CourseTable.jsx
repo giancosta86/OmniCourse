@@ -54,6 +54,10 @@ const inferPortal = course => {
     return "Pluralsight"
   }
 
+  if (course.url.includes("linkedin.com/")) {
+    return "LinkedIn"
+  }
+
   if (course.url.includes("university.mongodb.com/")) {
     return "MongoDB University"
   }
