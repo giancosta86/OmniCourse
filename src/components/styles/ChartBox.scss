@@ -1,0 +1,42 @@
+@mixin styles {
+  .chartBox {
+    flex: 1;
+
+    .tooltip {
+      background: beige;
+      border: 2px solid rgb(138, 138, 138);
+      border-radius: 0.75em;
+      padding: 0.25em;
+      text-align: center;
+
+      label {
+        font-size: 0.85em;
+        margin-right: 0.2em;
+      }
+
+      .percentage {
+        font-size: 0.85em;
+        color: #474747;
+      }
+
+      .duration {
+        font-size: 0.75em;
+        font-style: italic;
+        color: #474747;
+      }
+
+      .instructions {
+        margin-top: 0.4em;
+        font-size: 0.66em;
+        font-style: italic;
+        color: #797777;
+      }
+    }
+
+    .recharts-legend-item {
+      display: inline-flex !important;
+      align-items: center !important;
+      cursor: pointer;
+    }
+  }
+}

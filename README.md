@@ -1,157 +1,65 @@
-# @giancosta86/omnicourse
+# OmniCourse
 
-_React component for drill-down chart analysis of online courses_
+_Interactive, React-based drill-down analysis of your learning experience_
 
-[![NPM](https://img.shields.io/npm/v/@giancosta86/omnicourse.svg)](https://www.npmjs.com/package/@giancosta86/omnicourse) [![Build Status](https://travis-ci.org/giancosta86/OmniCourse.svg?branch=master)](https://travis-ci.org/giancosta86/OmniCourse)
+![GitHub CI](https://github.com/giancosta86/omnicourse/actions/workflows/publish-to-npm.yml/badge.svg)
+[![npm version](https://badge.fury.io/js/@giancosta86%2Fomnicourse.svg)](https://badge.fury.io/js/@giancosta86%2Fomnicourse)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE)
 
 ![Screenshot](Screenshot.png)
 
 ## Introduction
 
-**OmniCourse** is a tiny library (just a few hundred lines! ^\_\_^), completely written in **ES6** and **JSX**, providing a **React** component dedicated to performing aggregated, decomposable analysis of _completed online courses_.
+**OmniCourse** is a **TypeScript** library for **React** dedicated to the multi-level analysis of one's _learning experience_.
 
-More precisely, its **CourseReport** component displays arbitrarily-nested taxonomies of courses in the form of _pie charts_: when the user clicks on a pie slice, a **drill-down** is performed, up to the _table summarizing the details_ of the courses belonging to the chosen path.
+More precisely, its **\<OmniCourse\>** component displays **pie charts** and **reports** automatically generated from **taxonomies** of **subjects** that classify **works** (online courses, books, talks, ...).
 
-To improve the user experience, the UI also includes **a breadcrumb navigation bar** to enable arbitrary backtracking during the drill-down exploration, as well as **a footer with grand-total counters** for the selected slice.
+**Interactive drill-down** is its core analytical feature: when the user _selects a taxonomy_ or _clicks on a pie slice_, the component shows the subjects/works contained in the related _taxonomy level_; of course, **a breadcrumb navigation bar** enables _arbitrary backtracking_ during the drill-down exploration.
 
-OmniCourse is designed to be the kernel of the **learning area** of my [personal website](https://gianlucacosta.info/) - but I wanted to package it as a library, despite its simplicity, to make it available to anyone willing to share their **knowledge**! ^\_\_^
+OmniCourse is designed to be the kernel of the [learning area](https://gianlucacosta.info/#learning) on my [personal website](https://gianlucacosta.info/) - but I wanted to package it as a library to make it accessible to everyone!🦋
 
 ## Installation
 
+OmniCourse can be installed like any NPM package:
+
 ```bash
-npm install @giancosta86/omnicourse
+yarn add @giancosta86/omnicourse
 ```
 
-OmniCourse is currently _transpiled_ and _polyfilled_ to _ES5_ via **Babel** with **core-js@2** and **regenerator**. In particular, it is designed to be compatible with:
+It is written in **TypeScript**, so you can take advantage of type definitions & annotations.
 
-- **Gatsby** projects, for static website generation
+For details about _installing and using OmniCourse_, please consult the [tutorial wiki page](https://github.com/giancosta86/OmniCourse/wiki/3.-Tutorial).
 
-- projects created via **create-react-app**
+## New features in OmniCourse 2
 
-## Usage
+- _Well-defined model_ written in **TypeScript**, with remarkably high **test coverage** on the model
 
-```jsx
-import React, { Component } from "react"
-import { CourseReport } from "@giancosta86/omnicourse"
+- Default **CSS stylesheet** out of the box - as a working basis for further customization
 
-class Example extends Component {
-  render() {
-    return <CourseReport sourceData={} rootLabel=""/>
-  }
-}
-```
+- Support for **deferred loading** from **arbitrary data sources**, with _opt-in caching_
 
-To see a more concrete example in action, please refer to its minimalist [test web application](https://github.com/giancosta86/OmniCourse-Test/), published on GitHub as well.
+- **Auto-drilldown**: if the current taxonomy level only contains _one subject_ (it is not _meaningful_), the React component automatically displays that subject's items by simulating a user click - recursively
 
-### Properties
+- **Path continuity**: when the user _switches between taxonomies_, OmniCourse tries to _reuse as many breadcrumbs as possible_ from the current taxonomy path, by automatically diving into the new taxonomy
 
-- **sourceData** (mandatory): course data, described using a dedicated, very simple JS-based notation (see **Data format** below)
+- **Download button** - so that users can download either a PNG of the current chart or the current work report in JSON format
 
-- **rootLabel** (mandatory): text of the label for the **select** component in the navigation bar
+- Almost identical _raw descriptor format_ - with **full backwards compatibility**
 
-- **className**: the class of the top-level **div** generated by the component. See **CSS styling** below
+- **Stricter input validation**, including prevention of _duplicate sibling works_ within a subject
 
-- **loader**: JSX component to be displayed while the chart is loading
+- **Sorting algorithm**, for both subjects and works
 
-- **colors**: array of colors used as a color palette by the charts. Please, refer to the documentation of _react-google-charts_ for more details
+- Advanced **chart customization** settings
 
-## CSS styling
+## Using the library
 
-**OmniCourse provides no styling** - _it is up to you to decide how to style the elements_! However, a sensible default - that is, the one depicted in the screenshot - can be found in the [example web application](https://github.com/giancosta86/OmniCourse-Test/): please, feel free to start by copying the contents of its **index.scss** stylesheet.
+OmniCourse is described in detail in its [wiki](https://github.com/giancosta86/OmniCourse/wiki); in particular, please refer to the [core model](https://github.com/giancosta86/OmniCourse/wiki/2.-Core-model) and [tutorial](https://github.com/giancosta86/OmniCourse/wiki/3.-Tutorial) sections.
 
-For further details, the following pseudocode describes the DOM tree created by the **CourseReport** component:
+## See also
 
-```scss
-div.<CourseReport className property> {
-  nav.path-bar {
-    label.root-label
-    select.root-select
-    button.internal.path-component
-    span.leaf.path-component
-  }
+- [OmniCourse - wiki](https://github.com/giancosta86/OmniCourse/wiki)
 
-  .course-chart
+- [Ulysses](https://github.com/giancosta86/ulysses) - Simplified generation of OmniCourse descriptors
 
-  div.table-container {
-    table.course-table {
-      thead {
-        tr {
-          td.title
-          td.duration
-          td.completion-date
-          td.portal
-          td.certificate
-        }
-      }
-
-      tbody {
-        tr {
-          td.title
-          td.duration
-          td.completion-date
-          td.portal
-          td.certificate
-        }
-      }
-    }
-  }
-
-  footer.context-summary {
-    div.total-duration {
-      label
-      span
-    }
-
-    div.total-courses {
-      label
-      span
-    }
-  }
-}
-```
-
-## Data format
-
-_Course taxonomies_ are described via _plain JavaScript notation_ - which is much easier to see than to explain: in particular, please refer to the **courses.js** file in the [example web application](https://github.com/giancosta86/OmniCourse-Test/).
-
-### Format rules
-
-- the **sourceData** object passed to **CourseReport** is a JavaScript object where:
-
-  - each **key** will be shown as an item in the **select** component of the navigation bar; consequently, in case of spaces or other characters not allowed in identifiers, you can _express the key as a string_
-
-  * each **value** can be either:
-
-    - **another object**, thus introducing _a conceptual subtree_ where the same rules apply
-
-    - **an array of courses**, where each **course** is described by an object whose meaningful fields are:
-
-      - **title** (mandatory)
-
-      - **minutes** (mandatory): the duration in minutes
-
-      - **url**: the official URL. If present, the course title in the course table will be displayed as a link pointing to such URL
-
-      - **portal**: the portal hosting the course. If missing, it could be inferred from the URL
-
-      - **completionDate** - if present, it should be in **YYYY-MM-DD** format
-
-      - **certificateUrl** - if present, a link to such URL will be shown in the course table
-
-## License
-
-Apache-2.0 © [giancosta86](https://github.com/giancosta86)
-
-## Third-party libraries
-
-- [React](https://reactjs.org/)
-
-- [react-google-charts](https://github.com/RakanNimer/react-google-charts)
-
-- [Babel](https://babeljs.io/)
-
-- [core-js](https://github.com/zloirock/core-js)
-
-- [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime)
-
-- [Jest](https://jestjs.io/)
+- [Recharts](https://recharts.org/)

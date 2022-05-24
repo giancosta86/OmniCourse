@@ -1,0 +1,57 @@
+@mixin styles {
+  .worksBox {
+    flex: 1;
+    margin-top: 1em;
+
+    ul.worksList {
+      li {
+        border: 2px solid black;
+        border-radius: 0.5em;
+        background: #ffffd4;
+        padding-top: 0.33em;
+        padding-bottom: 0.33em;
+        font-size: 0.85em;
+
+        margin-bottom: 0.75em;
+        text-align: center;
+
+        .title {
+          font-weight: bold;
+        }
+
+        .timeInfo {
+          font-style: italic;
+          font-size: 0.75em;
+          margin-top: 0.33em;
+          margin-bottom: 0.33em;
+        }
+      }
+    }
+
+    table.worksTable {
+      padding: 1em;
+
+      td {
+        border: 1px solid black;
+        padding: 0.7em;
+      }
+
+      thead {
+        font-weight: bold;
+        text-align: center;
+        background: lighten(cornflowerblue, 10%);
+      }
+
+      tbody {
+        background: aliceblue;
+
+        .duration,
+        .completionDate,
+        .kind,
+        .certificateUrl {
+          text-align: center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@mixin styles {
+  nav.pathBar {
+    font-size: 0.75em;
+    line-height: 2.5em;
+    margin-bottom: 0.5em;
+
+    .taxonomySelectionBox {
+      display: inline-block;
+    }
+
+    .breadcrumbs {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      .breadcrumb {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        background: white;
+        border: 1px solid black;
+        color: black;
+
+        border-radius: 0.8em;
+        margin-left: 0.5em;
+        margin-top: 0.5em;
+        font-weight: bold;
+        padding: 0 0.5em;
+        height: 2em;
+
+        &.previous.meaningful {
+          cursor: pointer;
+
+          border-color: darkslateblue;
+          background: aliceblue;
+          color: rgb(1, 1, 85);
+
+          &:hover {
+            background: rgb(199, 227, 255);
+          }
+        }
+      }
+    }
+  }
+}
