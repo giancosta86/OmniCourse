@@ -1,5 +1,6 @@
 import React, { ReactNode, useCallback, useRef } from "react";
-import { downloadJson } from "./downloads";
+import html2canvas from "html2canvas";
+import { downloadDataUrl, downloadJson } from "./downloads";
 import { useLearningContext } from "./LearningContext";
 import { LoadingBox } from "./LoadingBox";
 import { PathBar } from "./PathBar";
@@ -21,6 +22,20 @@ export const Main = ({
 
   const screenshotBoxElement = useRef<HTMLDivElement>(null);
 
+  const downloadAsPng = useCallback(async () => {
+    if (!screenshotBoxElement.current || !currentLevel) {
+      return;
+    }
+
+    const screenshotCanvas = await html2canvas(screenshotBoxElement.current, {
+      ignoreElements: element => element.className == "taxonomySelectionBox"
+    });
+
+    const screenshotDataUrl = screenshotCanvas.toDataURL("image/png");
+
+    downloadDataUrl(screenshotDataUrl, `${currentLevel.name}.png`);
+  }, [currentLevel]);
+
   const downloadAsJson = useCallback(() => {
     if (!currentLevel) {
       return;
@@ -29,8 +44,11 @@ export const Main = ({
     downloadJson(currentLevel.items, `${currentLevel.name}.json`);
   }, [currentLevel]);
 
-  const download =
-    currentLevel && !currentLevel.containsSubjects ? downloadAsJson : undefined;
+  const download = currentLevel
+    ? currentLevel.containsSubjects
+      ? downloadAsPng
+      : downloadAsJson
+    : undefined;
 
   return (
     <LoadingBox isLoading={!taxonomyKeys} loadingNode={loadingNode}>

@@ -1,6 +1,6 @@
 {
   "name": "@giancosta86/omnicourse",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Interactive, React-based drill-down analysis of your learning experience",
   "main": "dist",
   "types": "dist",
@@ -66,6 +66,7 @@
     "eslint": "^8.16.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "html2canvas": "^1.4.1",
     "jest": "^28.1.0",
     "prettier": "^2.6.2",
     "prop-types": "^15",
