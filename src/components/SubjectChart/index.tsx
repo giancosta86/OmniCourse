@@ -119,11 +119,13 @@ export const SubjectChart = ({ subjects, chartSettings }: Props) => {
           {createCells()}
         </Pie>
 
-        <Tooltip
-          content={
-            <SubjectTooltip totalMinutes={currentLevel?.totalMinutes ?? 0} />
-          }
-        />
+        {!onMobile && (
+          <Tooltip
+            content={
+              <SubjectTooltip totalMinutes={currentLevel?.totalMinutes ?? 0} />
+            }
+          />
+        )}
 
         <Legend iconType="star" onClick={onLegendLabelClicked} />
       </PieChart>
