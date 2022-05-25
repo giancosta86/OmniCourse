@@ -42,7 +42,7 @@ For details about _installing and using OmniCourse_, please consult the [tutoria
 
 - **Path continuity**: when the user _switches between taxonomies_, OmniCourse tries to _reuse as many breadcrumbs as possible_ from the current taxonomy path, by automatically diving into the new taxonomy
 
-- **Download button** - so that users can download either a PNG of the current chart or the current work report in JSON format
+- **Download button** - so that users can download the current work report in JSON format
 
 - Almost identical _raw descriptor format_ - with **full backwards compatibility**
 

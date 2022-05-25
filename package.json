@@ -53,8 +53,7 @@
     "taxonomy"
   ],
   "dependencies": {
-    "classnames": "^2.3.1",
-    "html2canvas": "^1.4.1"
+    "classnames": "^2.3.1"
   },
   "devDependencies": {
     "@types/d3-scale": "^4.0.2",
