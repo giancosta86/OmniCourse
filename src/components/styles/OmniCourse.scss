@@ -1,7 +1,7 @@
-@use "PathBar";
+@use "ChartBox";
 @use "DownloadBox";
-@use "CurrentLevelBox";
-@use "LoadingBox";
+@use "PathBar";
+@use "WorksBox";
 
 .omniCourse {
   display: flex;
@@ -19,13 +19,32 @@
     background: white;
     padding: 0.5em;
     padding-top: 0;
-
-    @include PathBar.styles;
-
-    @include CurrentLevelBox.styles;
   }
 
-  @include DownloadBox.styles;
+  .currentLevelBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 
-  @include LoadingBox.styles;
+    footer {
+      font-size: 0.75em;
+      margin-top: 1.25em;
+      line-height: 1.25em;
+    }
+  }
+
+  .loadingBox {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  @include ChartBox.styles;
+  @include DownloadBox.styles;
+  @include PathBar.styles;
+  @include WorksBox.styles;
 }

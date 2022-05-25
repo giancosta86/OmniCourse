@@ -2,22 +2,22 @@
   .downloadBox {
     margin-top: 0.5em;
     text-align: center;
+  }
 
-    button.download {
-      font-size: 0.75em;
-      font-weight: bold;
-      margin-left: 0.75em;
-      padding: 0.5em;
-      border-radius: 0.5em;
-      background: rgb(230, 255, 230);
-      color: rgb(0, 46, 0);
-      border: 1px solid darkgreen;
-      cursor: pointer;
-      box-shadow: 3px 3px 3px rgb(0, 48, 0);
+  .download {
+    font-size: 0.75em;
+    font-weight: bold;
+    margin-left: 0.75em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background: rgb(230, 255, 230);
+    color: rgb(0, 46, 0);
+    border: 1px solid darkgreen;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px rgb(0, 48, 0);
 
-      &:hover {
-        background: rgb(196, 236, 196);
-      }
+    &:hover {
+      background: rgb(196, 236, 196);
     }
   }
 }

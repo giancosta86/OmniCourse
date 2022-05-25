@@ -1,42 +1,42 @@
 @mixin styles {
   .chartBox {
     flex: 1;
+  }
 
-    .tooltip {
-      background: beige;
-      border: 2px solid rgb(138, 138, 138);
-      border-radius: 0.75em;
-      padding: 0.25em;
-      text-align: center;
+  .recharts-legend-item {
+    display: inline-flex !important;
+    align-items: center !important;
+    cursor: pointer !important;
+  }
 
-      label {
-        font-size: 0.85em;
-        margin-right: 0.2em;
-      }
+  .tooltip {
+    background: beige;
+    border: 2px solid rgb(138, 138, 138);
+    border-radius: 0.75em;
+    padding: 0.25em;
+    text-align: center;
 
-      .percentage {
-        font-size: 0.85em;
-        color: #474747;
-      }
-
-      .duration {
-        font-size: 0.75em;
-        font-style: italic;
-        color: #474747;
-      }
-
-      .instructions {
-        margin-top: 0.4em;
-        font-size: 0.66em;
-        font-style: italic;
-        color: #797777;
-      }
+    label {
+      font-size: 0.85em;
+      margin-right: 0.2em;
     }
 
-    .recharts-legend-item {
-      display: inline-flex !important;
-      align-items: center !important;
-      cursor: pointer;
+    .percentage {
+      font-size: 0.85em;
+      color: #474747;
+    }
+
+    .duration {
+      font-size: 0.75em;
+      font-style: italic;
+      color: #474747;
+    }
+
+    .instructions {
+      margin-top: 0.4em;
+      font-size: 0.66em;
+      font-style: italic;
+      color: #797777;
     }
   }
 }
