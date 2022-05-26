@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { Subject } from "../../Subject";
 import {
   PieChart,
@@ -26,6 +26,14 @@ export const SubjectChart = ({ subjects, chartSettings }: Props) => {
     pushToTaxonomyPath
   } = useLearningContext();
 
+  const [repaintNeeded, setRepaintNeeded] = useState(false);
+
+  useLayoutEffect(() => {
+    if (repaintNeeded) {
+      setRepaintNeeded(false);
+    }
+  }, [repaintNeeded]);
+
   const data = useMemo(
     () =>
       subjects.map(subject => {
@@ -44,6 +52,14 @@ export const SubjectChart = ({ subjects, chartSettings }: Props) => {
 
   const colorPalette = actualChartSettings.colorPalette;
 
+  const performDrillDown = useCallback(
+    (subject: Subject) => {
+      pushToTaxonomyPath(subject);
+      setRepaintNeeded(true);
+    },
+    [pushToTaxonomyPath]
+  );
+
   const createCells = useCallback(() => {
     if (!taxonomyPath) {
       throw new Error("Missing taxonomy path!");
@@ -59,10 +75,10 @@ export const SubjectChart = ({ subjects, chartSettings }: Props) => {
               colorPalette.length
           ]
         }
-        onClick={() => pushToTaxonomyPath(subject)}
+        onClick={() => performDrillDown(subject)}
       />
     ));
-  }, [colorPalette, subjects, pushToTaxonomyPath, taxonomyPath]);
+  }, [colorPalette, subjects, performDrillDown, taxonomyPath]);
 
   type LegendLabel = { value: string };
 
@@ -75,9 +91,9 @@ export const SubjectChart = ({ subjects, chartSettings }: Props) => {
         throw new Error("Legend labels out of sync!");
       }
 
-      pushToTaxonomyPath(subject);
+      performDrillDown(subject);
     },
-    [subjects, pushToTaxonomyPath]
+    [subjects, performDrillDown]
   );
 
   if (!selectedTaxonomyKey) {
@@ -86,6 +102,17 @@ export const SubjectChart = ({ subjects, chartSettings }: Props) => {
 
   if (!currentLevel) {
     throw new Error("There should be a taxonomy level here!");
+  }
+
+  if (repaintNeeded) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: actualChartSettings.chartHeight
+        }}
+      />
+    );
   }
 
   return (
@@ -119,13 +146,11 @@ export const SubjectChart = ({ subjects, chartSettings }: Props) => {
           {createCells()}
         </Pie>
 
-        {!onMobile && (
-          <Tooltip
-            content={
-              <SubjectTooltip totalMinutes={currentLevel?.totalMinutes ?? 0} />
-            }
-          />
-        )}
+        <Tooltip
+          content={
+            <SubjectTooltip totalMinutes={currentLevel?.totalMinutes ?? 0} />
+          }
+        />
 
         <Legend iconType="star" onClick={onLegendLabelClicked} />
       </PieChart>

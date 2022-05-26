@@ -1,6 +1,6 @@
 {
   "name": "@giancosta86/omnicourse",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Interactive, React-based drill-down analysis of your learning experience",
   "main": "dist",
   "types": "dist",
