@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { Subject } from "../../Subject";
 import {
   PieChart,
@@ -44,6 +44,18 @@ export const SubjectChart = ({ subjects, chartSettings }: Props) => {
 
   const colorPalette = actualChartSettings.colorPalette;
 
+  const [subjectUnderMouse, setSubjectUnderMouse] = useState<
+    Subject | undefined
+  >(undefined);
+
+  const performDrillDown = useCallback(
+    (subject: Subject) => {
+      setSubjectUnderMouse(undefined);
+      pushToTaxonomyPath(subject);
+    },
+    [pushToTaxonomyPath]
+  );
+
   const createCells = useCallback(() => {
     if (!taxonomyPath) {
       throw new Error("Missing taxonomy path!");
@@ -59,10 +71,12 @@ export const SubjectChart = ({ subjects, chartSettings }: Props) => {
               colorPalette.length
           ]
         }
-        onClick={() => pushToTaxonomyPath(subject)}
+        onClick={() => performDrillDown(subject)}
+        onMouseEnter={() => setSubjectUnderMouse(subject)}
+        onMouseLeave={() => setSubjectUnderMouse(undefined)}
       />
     ));
-  }, [colorPalette, subjects, pushToTaxonomyPath, taxonomyPath]);
+  }, [colorPalette, subjects, performDrillDown, taxonomyPath]);
 
   type LegendLabel = { value: string };
 
@@ -119,13 +133,14 @@ export const SubjectChart = ({ subjects, chartSettings }: Props) => {
           {createCells()}
         </Pie>
 
-        {!onMobile && (
-          <Tooltip
-            content={
-              <SubjectTooltip totalMinutes={currentLevel?.totalMinutes ?? 0} />
-            }
-          />
-        )}
+        <Tooltip
+          content={
+            <SubjectTooltip
+              subject={subjectUnderMouse}
+              totalMinutes={currentLevel?.totalMinutes ?? 0}
+            />
+          }
+        />
 
         <Legend iconType="star" onClick={onLegendLabelClicked} />
       </PieChart>
