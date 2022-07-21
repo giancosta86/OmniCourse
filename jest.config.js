@@ -3,8 +3,6 @@ module.exports = {
     "^.+\\.(t|j)sx?$": ["@swc/jest"]
   },
 
-  testRegex: "\\.test\\.tsx?$",
-
-  collectCoverageFrom: ["src/**/*.ts"],
+  testPathIgnorePatterns: ["dist/"],
   coveragePathIgnorePatterns: [`/src/index.ts$`, `/components/`]
 };
