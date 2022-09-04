@@ -28,6 +28,8 @@ yarn add @giancosta86/omnicourse
 
 It is written in **TypeScript**, so you can take advantage of type definitions & annotations.
 
+The public API entirely resides in the root package index, so you shouldn't reference specific modules.
+
 For details about _installing and using OmniCourse_, please consult the [tutorial wiki page](https://github.com/giancosta86/OmniCourse/wiki/3.-Tutorial).
 
 ## New features in OmniCourse 2
