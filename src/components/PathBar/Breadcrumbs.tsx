@@ -1,5 +1,5 @@
-import classNames from "classnames";
 import React, { useCallback } from "react";
+import classNames from "classnames";
 import { isMeaningful, TaxonomyLevel } from "../../TaxonomyLevel";
 import { TaxonomyPath } from "../../TaxonomyPath";
 

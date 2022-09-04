@@ -1,5 +1,4 @@
 import React, { useCallback, useLayoutEffect, useMemo, useState } from "react";
-import { Subject } from "../../Subject";
 import {
   PieChart,
   Pie,
@@ -8,6 +7,7 @@ import {
   Cell,
   ResponsiveContainer
 } from "recharts";
+import { Subject } from "../../Subject";
 import { SubjectTooltip } from "./SubjectTooltip";
 import { ChartSettings, createActualChartSettings } from "./ChartSettings";
 import { useLearningContext } from "../LearningContext";
