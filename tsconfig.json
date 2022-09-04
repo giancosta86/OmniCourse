@@ -2,9 +2,10 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "CommonJS",
-    "jsx": "react",
 
     "moduleResolution": "Node",
+
+    "jsx": "react",
 
     "rootDir": "./src",
     "outDir": "./dist",
@@ -14,7 +15,6 @@
     "sourceMap": true,
     "removeComments": true,
 
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
 
     "strict": true,
@@ -27,6 +27,6 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
 
-    "skipLibCheck": false
+    "esModuleInterop": true
   }
 }
