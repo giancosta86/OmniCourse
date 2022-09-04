@@ -76,7 +76,7 @@
     "recharts": ">=2"
   },
   "engines": {
-    "node": ">=17.1.0"
+    "node": ">=16.16.0"
   },
   "publishConfig": {
     "access": "public"
