@@ -2,10 +2,9 @@ import React from "react";
 import { Subject } from "../Subject";
 import { Work } from "../Work";
 import { formatDuration } from "../formatting";
-import { SubjectChart } from "./SubjectChart";
+import { SubjectChart, ChartSettings } from "./SubjectChart";
 import { WorksBox } from "./WorksBox";
 import { useLearningContext } from "./LearningContext";
-import { ChartSettings } from "./SubjectChart/ChartSettings";
 
 export interface Props {
   chartSettings?: Partial<ChartSettings>;

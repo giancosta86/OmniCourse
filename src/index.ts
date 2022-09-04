@@ -13,11 +13,13 @@ export {
 } from "./input/repository/FetchingTaxonomyRepository";
 export { CachingTaxonomyRepository } from "./input/repository/CachingTaxonomyRepository";
 
-export { ChartItem } from "./components/SubjectChart/ChartItem";
 export {
+  ChartItem,
   ChartSettings,
   LabelVisibilityParams,
   LabelVisibilityPredicate
-} from "./components/SubjectChart/ChartSettings";
+} from "./components/SubjectChart";
+
 export { TaxonomyKeysFetcher } from "./components/LearningContext";
+
 export { OmniCourse } from "./components/OmniCourse";

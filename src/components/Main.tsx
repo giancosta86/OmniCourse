@@ -4,7 +4,7 @@ import { downloadDataUrl, downloadJson } from "./downloads";
 import { useLearningContext } from "./LearningContext";
 import { LoadingBox } from "./LoadingBox";
 import { PathBar } from "./PathBar";
-import { ChartSettings } from "./SubjectChart/ChartSettings";
+import { ChartSettings } from "./SubjectChart";
 import { CurrentLevelBox } from "./CurrentLevelBox";
 
 export interface Props {

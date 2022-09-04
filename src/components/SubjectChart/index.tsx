@@ -12,6 +12,13 @@ import { SubjectTooltip } from "./SubjectTooltip";
 import { ChartSettings, createActualChartSettings } from "./ChartSettings";
 import { useLearningContext } from "../LearningContext";
 
+export { ChartItem } from "./ChartItem";
+export {
+  ChartSettings,
+  LabelVisibilityParams,
+  LabelVisibilityPredicate
+} from "./ChartSettings";
+
 export interface Props {
   subjects: readonly Subject[];
   chartSettings?: Partial<ChartSettings>;

@@ -6,7 +6,7 @@ import {
   TaxonomyKeysFetcher
 } from "./LearningContext";
 import { Main } from "./Main";
-import { ChartSettings } from "./SubjectChart/ChartSettings";
+import { ChartSettings } from "./SubjectChart";
 
 export interface Props {
   onMobile: boolean;
