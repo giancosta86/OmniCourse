@@ -2,41 +2,6 @@
   "name": "@giancosta86/omnicourse",
   "version": "2.2.4",
   "description": "Interactive, React-based drill-down analysis of your learning experience",
-  "main": "dist",
-  "types": "dist",
-  "files": [],
-  "engines": {
-    "node": ">=17.1.0"
-  },
-  "scripts": {
-    "clean": "rimraf dist && rimraf coverage && rimraf giancosta86-*.tgz",
-    "format": "prettier --write .",
-    "prepack": "yarn check-all && yarn build",
-    "check-all": "yarn check-format && yarn lint && yarn test",
-    "check-format": "prettier --check .",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "build": "yarn compile-ts && yarn compile-sass",
-    "compile-ts": "tsc",
-    "compile-sass": "sass src/components/styles/OmniCourse.scss:dist/OmniCourse.css",
-    "watch": "concurrently \"yarn compile-ts --watch\" \"yarn compile-sass --watch\""
-  },
-  "author": {
-    "name": "Gianluca Costa",
-    "url": "https://gianlucacosta.info/",
-    "email": "gianluca@gianlucacosta.info"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/giancosta86/OmniCourse.git"
-  },
-  "homepage": "https://github.com/giancosta86/OmniCourse#readme",
-  "bugs": {
-    "url": "https://github.com/giancosta86/OmniCourse/issues"
-  },
   "keywords": [
     "React",
     "component",
@@ -52,6 +17,33 @@
     "certificate",
     "taxonomy"
   ],
+  "homepage": "https://github.com/giancosta86/OmniCourse#readme",
+  "bugs": "https://github.com/giancosta86/OmniCourse/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Gianluca Costa",
+    "email": "gianluca@gianlucacosta.info",
+    "url": "https://gianlucacosta.info/"
+  },
+  "files": [],
+  "main": "dist",
+  "types": "dist",
+  "repository": "giancosta86/OmniCourse",
+  "scripts": {
+    "clean": "rimraf dist && rimraf coverage && rimraf giancosta86-*.tgz",
+    "format": "prettier --write .",
+    "prepack": "yarn check-all && yarn build",
+    "check-all": "yarn check-format && yarn lint && yarn test",
+    "check-format": "prettier --check .",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "yarn compile-ts && yarn compile-sass",
+    "compile-ts": "tsc",
+    "compile-sass": "sass src/components/styles/OmniCourse.scss:dist/OmniCourse.css",
+    "watch": "concurrently \"yarn compile-ts --watch\" \"yarn compile-sass --watch\""
+  },
   "dependencies": {
     "classnames": "^2.3.1",
     "html2canvas": "^1.4.1"
@@ -79,11 +71,14 @@
     "sass": "^1.51.0",
     "typescript": "^4.6.4"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "peerDependencies": {
     "react": ">=17",
     "recharts": ">=2"
+  },
+  "engines": {
+    "node": ">=17.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
