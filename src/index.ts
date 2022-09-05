@@ -2,7 +2,7 @@ export { IsoDate } from "./IsoDate";
 export { Work } from "./Work";
 export { Subject } from "./Subject";
 export { Taxonomy } from "./Taxonomy";
-export { RawTaxonomy, toTaxonomy } from "./input/raw";
+export { RawTaxonomy, toTaxonomy, TaxonomyReifier } from "./input/raw";
 
 export { TaxonomyKey } from "./input/repository/TaxonomyKey";
 export { TaxonomyRepository } from "./input/repository/TaxonomyRepository";
@@ -21,5 +21,7 @@ export {
 } from "./components/SubjectChart";
 
 export { TaxonomyKeysFetcher } from "./components/LearningContext";
+
+export { createTaxonomyReifierFromWorker } from "./TaxonomyWorker";
 
 export { OmniCourse } from "./components/OmniCourse";

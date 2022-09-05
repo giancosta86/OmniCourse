@@ -1,6 +1,6 @@
 {
   "name": "@giancosta86/omnicourse",
-  "version": "2.2.4",
+  "version": "2.3.0",
   "description": "Interactive, React-based drill-down analysis of your learning experience",
   "keywords": [
     "React",
@@ -48,7 +48,8 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
-    "html2canvas": "^1.4.1"
+    "html2canvas": "^1.4.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@swc/core": "^1.2.218",
@@ -57,6 +58,7 @@
     "@types/d3-shape": "^3.0.2",
     "@types/jest": "^27.5.0",
     "@types/react": "^17",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
     "concurrently": "^7.1.0",

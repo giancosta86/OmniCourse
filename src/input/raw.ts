@@ -22,6 +22,11 @@ type RawWork = Readonly<
   }>
 >;
 
+export type TaxonomyReifier = (
+  taxonomyName: string,
+  rawTaxonomy: RawTaxonomy
+) => Taxonomy | Promise<Taxonomy>;
+
 export function toTaxonomy(name: string, rawTaxonomy: RawTaxonomy): Taxonomy {
   const firstLevelSubjects = toSubjects(rawTaxonomy);
   return new Taxonomy(name, firstLevelSubjects);
