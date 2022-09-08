@@ -54,6 +54,8 @@ For details about _installing and using OmniCourse_, please consult the [tutoria
 
 - Advanced **chart customization** settings
 
+- On-demand **asynchronous loading** via **web workers** - to offload computation from the UI thread
+
 ## Using the library
 
 OmniCourse is described in detail in its [wiki](https://github.com/giancosta86/OmniCourse/wiki); in particular, please refer to the [core model](https://github.com/giancosta86/OmniCourse/wiki/2.-Core-model) and [tutorial](https://github.com/giancosta86/OmniCourse/wiki/3.-Tutorial) sections.
