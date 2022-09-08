@@ -6,7 +6,7 @@ _Interactive, React-based drill-down analysis of your learning experience_
 [![npm version](https://badge.fury.io/js/@giancosta86%2Fomnicourse.svg)](https://badge.fury.io/js/@giancosta86%2Fomnicourse)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE)
 
-![Screenshot](Screenshot.png)
+![Screenshot](docs/screenshot.png)
 
 ## Introduction
 
