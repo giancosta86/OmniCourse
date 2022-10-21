@@ -1,6 +1,6 @@
 {
   "name": "@giancosta86/omnicourse",
-  "version": "2.3.1-rc.1",
+  "version": "2.3.1",
   "description": "Interactive, React-based drill-down analysis of your learning experience",
   "keywords": [
     "React",
@@ -47,7 +47,7 @@
     "watch": "concurrently \"yarn compile-ts --watch\" \"yarn compile-sass --watch\""
   },
   "dependencies": {
-    "@giancosta86/omnicourse-core": "^1.0.0-rc.1",
+    "@giancosta86/omnicourse-core": "^1.0.0",
     "classnames": "^2.3.1",
     "html2canvas": "^1.4.1",
     "uuid": "^8.3.2"
