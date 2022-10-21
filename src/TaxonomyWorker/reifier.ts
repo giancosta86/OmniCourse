@@ -1,6 +1,9 @@
 import { v4 as uuid4 } from "uuid";
-import { RawTaxonomy, TaxonomyReifier } from "../input/raw";
-import { Taxonomy } from "../Taxonomy";
+import {
+  Taxonomy,
+  RawTaxonomy,
+  TaxonomyReifier
+} from "@giancosta86/omnicourse-core";
 import { MessageFromWorker, MessageToWorker } from "./protocol";
 
 export function createTaxonomyReifierFromWorker(

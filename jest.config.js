@@ -3,7 +3,5 @@ module.exports = {
     "^.+\\.(t|j)sx?$": ["@swc/jest"]
   },
 
-  testPathIgnorePatterns: ["<rootDir>/dist/", "/_.+"],
-
-  coveragePathIgnorePatterns: [`/src/index.ts$`, `/components/`]
+  testPathIgnorePatterns: ["<rootDir>/dist/", "/_.+"]
 };

@@ -1,4 +1,4 @@
-import { toTaxonomy } from "../input/raw";
+import { toTaxonomy } from "@giancosta86/omnicourse-core";
 import { MessageFromWorker, MessageToWorker } from "./protocol";
 
 self.addEventListener("message", event => {

@@ -1,7 +1,5 @@
 import React from "react";
-import { Subject } from "../Subject";
-import { Work } from "../Work";
-import { formatDuration } from "../formatting";
+import { Subject, Work, formatDuration } from "@giancosta86/omnicourse-core";
 import { SubjectChart, ChartSettings } from "./SubjectChart";
 import { WorksBox } from "./WorksBox";
 import { useLearningContext } from "./LearningContext";

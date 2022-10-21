@@ -7,7 +7,7 @@ import {
   Cell,
   ResponsiveContainer
 } from "recharts";
-import { Subject } from "../../Subject";
+import { Subject } from "@giancosta86/omnicourse-core";
 import { SubjectTooltip } from "./SubjectTooltip";
 import { ChartSettings, createActualChartSettings } from "./ChartSettings";
 import { useLearningContext } from "../LearningContext";

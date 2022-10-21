@@ -1,5 +1,5 @@
 import React from "react";
-import { TaxonomyKey } from "../../input/repository/TaxonomyKey";
+import { TaxonomyKey } from "@giancosta86/omnicourse-core";
 
 export interface Props {
   label: string;

@@ -308,6 +308,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@giancosta86/omnicourse-core@^1.0.0-rc.1":
+  version "1.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@giancosta86/omnicourse-core/-/omnicourse-core-1.0.0-rc.1.tgz#f7fb535d01027274aa4c86d60e6c1bed111741b0"
+  integrity sha512-Xb8LDrGtYajhK9RxlvK4DWYPe1Phx7cbsGPxlRffp9zhd1GCutOPwpV4dZnsEz6LucL93RZZvVvqxrpJlrSqmg==
+
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.9.5.tgz#2cbaf9a89460da24b5ca6531b8bbfc23e1df50c7"

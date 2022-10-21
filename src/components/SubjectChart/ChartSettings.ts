@@ -1,5 +1,4 @@
-import { TaxonomyKey } from "../../input/repository/TaxonomyKey";
-import { TaxonomyLevel } from "../../TaxonomyLevel";
+import { TaxonomyKey, TaxonomyLevel } from "@giancosta86/omnicourse-core";
 import { ChartItem } from "./ChartItem";
 import { defaultColorPalette } from "./colors";
 

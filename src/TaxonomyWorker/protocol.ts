@@ -1,5 +1,4 @@
-import { Taxonomy } from "../Taxonomy";
-import { RawTaxonomy } from "../input/raw";
+import { Taxonomy, RawTaxonomy } from "@giancosta86/omnicourse-core";
 
 type WithCorrelationId = Readonly<{ correlationId: string }>;
 

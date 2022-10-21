@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import classNames from "classnames";
-import { TaxonomyRepository } from "../input/repository/TaxonomyRepository";
+import { TaxonomyRepository } from "@giancosta86/omnicourse-core";
 import {
   LearningContextProvider,
   TaxonomyKeysFetcher

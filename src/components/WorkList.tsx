@@ -1,6 +1,5 @@
 import React from "react";
-import { Work } from "../Work";
-import { formatDate, formatDuration } from "../formatting";
+import { Work, formatDate, formatDuration } from "@giancosta86/omnicourse-core";
 import { WorkTitle } from "./WorkTitle";
 
 export interface Props {

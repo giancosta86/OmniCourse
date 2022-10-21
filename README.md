@@ -32,6 +32,8 @@ The public API entirely resides in the root package index, so you shouldn't refe
 
 For details about _installing and using OmniCourse_, please consult the [tutorial wiki page](https://github.com/giancosta86/OmniCourse/wiki/3.-Tutorial).
 
+Alternatively, the lightweight kernel, focusing on just the core model - with no UI dependencies - is available as the [OmniCourse-core](https://github.com/giancosta86/OmniCourse-core) project.
+
 ## New features in OmniCourse 2
 
 - _Well-defined model_ written in **TypeScript**, with remarkably high **test coverage** on the model
@@ -56,6 +58,8 @@ For details about _installing and using OmniCourse_, please consult the [tutoria
 
 - On-demand **asynchronous loading** via **web workers** - to offload computation from the UI thread
 
+- **Lightweight core model** - in the [OmniCourse-core](https://github.com/giancosta86/OmniCourse-core) TypeScript library
+
 ## Using the library
 
 OmniCourse is described in detail in its [wiki](https://github.com/giancosta86/OmniCourse/wiki); in particular, please refer to the [core model](https://github.com/giancosta86/OmniCourse/wiki/2.-Core-model) and [tutorial](https://github.com/giancosta86/OmniCourse/wiki/3.-Tutorial) sections.
@@ -63,6 +67,8 @@ OmniCourse is described in detail in its [wiki](https://github.com/giancosta86/O
 ## See also
 
 - [OmniCourse - wiki](https://github.com/giancosta86/OmniCourse/wiki)
+
+- [OmniCourse-core](https://github.com/giancosta86/OmniCourse-core) - Lightweight core model
 
 - [Ulysses](https://github.com/giancosta86/ulysses) - Simplified generation of OmniCourse descriptors
 

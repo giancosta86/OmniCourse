@@ -1,5 +1,5 @@
 import React from "react";
-import { Work } from "../Work";
+import { Work } from "@giancosta86/omnicourse-core";
 import { useLearningContext } from "./LearningContext";
 import { WorkList } from "./WorkList";
 import { WorkTable } from "./WorkTable";

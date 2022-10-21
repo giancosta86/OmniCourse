@@ -1,6 +1,6 @@
 import React from "react";
 import { TooltipProps } from "recharts/types/component/Tooltip";
-import { formatDuration } from "../../formatting";
+import { formatDuration } from "@giancosta86/omnicourse-core";
 
 export type Props = TooltipProps<number, string> & {
   totalMinutes: number;

@@ -1,7 +1,10 @@
 import React, { useCallback } from "react";
 import classNames from "classnames";
-import { isMeaningful, TaxonomyLevel } from "../../TaxonomyLevel";
-import { TaxonomyPath } from "../../TaxonomyPath";
+import {
+  isMeaningful,
+  TaxonomyLevel,
+  TaxonomyPath
+} from "@giancosta86/omnicourse-core";
 
 export interface Props {
   taxonomyPath: TaxonomyPath;

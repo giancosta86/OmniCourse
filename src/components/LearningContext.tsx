@@ -8,15 +8,15 @@ import React, {
   createContext,
   ReactNode
 } from "react";
-import { formatError } from "../formatting";
 import {
+  formatError,
   TaxonomyKey,
-  validateTaxonomyKeys
-} from "../input/repository/TaxonomyKey";
-import { TaxonomyRepository } from "../input/repository/TaxonomyRepository";
-import { Subject } from "../Subject";
-import { TaxonomyLevel } from "../TaxonomyLevel";
-import { TaxonomyPath } from "../TaxonomyPath";
+  validateTaxonomyKeys,
+  TaxonomyRepository,
+  Subject,
+  TaxonomyLevel,
+  TaxonomyPath
+} from "@giancosta86/omnicourse-core";
 
 export type TaxonomyKeysFetcher = () => Promise<readonly TaxonomyKey[]>;
 

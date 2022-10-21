@@ -1,5 +1,5 @@
 import React from "react";
-import { Work } from "../Work";
+import { Work } from "@giancosta86/omnicourse-core";
 
 export interface Props {
   work: Work;
