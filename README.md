@@ -8,8 +8,6 @@ _Interactive, React-based drill-down analysis of your learning experience_
 
 ![Screenshot](docs/screenshot.png)
 
-## Introduction
-
 **OmniCourse** is a **TypeScript** library for **React** dedicated to the multi-level analysis of one's _learning experience_.
 
 More precisely, its **\<OmniCourse\>** component displays **pie charts** and **reports** automatically generated from **taxonomies** of **subjects** that classify **works** (online courses, books, talks, ...).
@@ -20,11 +18,9 @@ OmniCourse is designed to be the kernel of the [learning area](https://gianlucac
 
 ## Installation
 
-OmniCourse can be installed like any NPM package:
+The package on NPM is:
 
-```bash
-yarn add @giancosta86/omnicourse
-```
+> @giancosta86/omnicourse
 
 It is written in **TypeScript**, so you can take advantage of type definitions & annotations.
 
@@ -60,7 +56,7 @@ Alternatively, the lightweight kernel, focusing on just the core model - with no
 
 - **Lightweight core model** - in the [OmniCourse-core](https://github.com/giancosta86/OmniCourse-core) TypeScript library
 
-## Using the library
+## Usage
 
 OmniCourse is described in detail in its [wiki](https://github.com/giancosta86/OmniCourse/wiki); in particular, please refer to the [core model](https://github.com/giancosta86/OmniCourse/wiki/2.-Core-model) and [tutorial](https://github.com/giancosta86/OmniCourse/wiki/3.-Tutorial) sections.
 

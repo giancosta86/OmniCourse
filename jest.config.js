@@ -3,5 +3,5 @@ module.exports = {
     "^.+\\.(t|j)sx?$": ["@swc/jest"]
   },
 
-  testPathIgnorePatterns: ["<rootDir>/dist/", "/_.+"]
+  testPathIgnorePatterns: ["/_.+", "<rootDir>/dist/"]
 };

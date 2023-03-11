@@ -11,6 +11,9 @@ module.exports = {
   env: {
     node: true
   },
+  rules: {
+    "@typescript-eslint/no-namespace": "off"
+  },
   settings: {
     react: {
       version: "detect"

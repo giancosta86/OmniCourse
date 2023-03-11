@@ -1,45 +1,88 @@
-import React, { ReactNode } from "react";
-import classNames from "classnames";
-import { TaxonomyRepository } from "@giancosta86/omnicourse-core";
-import {
-  LearningContextProvider,
-  TaxonomyKeysFetcher
-} from "./LearningContext";
+import React, { ReactNode, useMemo, useState } from "react";
+import { List } from "@rimbu/list";
+import { DictionaryLibrary, LocaleLike } from "@giancosta86/hermes";
+import { formatError } from "@giancosta86/format-error";
+import { RawTaxonomyFetcher } from "@giancosta86/omnicourse-core";
+import { useAsyncFetcher } from "@giancosta86/captain-hook";
+import { useBackgroundTaxonomyReifier } from "@/worker";
+import { LearningContextProvider, TaxonomyPreview } from "./LearningContext";
 import { Main } from "./Main";
-import { ChartSettings } from "./SubjectChart";
+import { ChartSettings } from "./Main/SubjectChart";
 
-export interface Props {
+export type TaxonomyPreviewsFetcher = () => Promise<Iterable<TaxonomyPreview>>;
+
+export interface OmniCourseProps {
+  locale: LocaleLike;
+  dictionaryLibrary?: DictionaryLibrary;
   onMobile: boolean;
-  customClassName?: string;
   taxonomySelectLabel: string;
-  taxonomyKeysFetcher: TaxonomyKeysFetcher;
-  taxonomyRepository: TaxonomyRepository;
+  taxonomyPreviewsFetcher: TaxonomyPreviewsFetcher;
+  rawTaxonomyFetcher: RawTaxonomyFetcher;
   loadingNode: ReactNode;
   chartSettings?: Partial<ChartSettings>;
 }
 
 export const OmniCourse = ({
+  locale,
+  dictionaryLibrary,
   onMobile,
-  customClassName,
   taxonomySelectLabel,
-  taxonomyKeysFetcher,
-  taxonomyRepository,
+  taxonomyPreviewsFetcher,
+  rawTaxonomyFetcher,
   loadingNode,
   chartSettings
-}: Props) => {
-  return (
-    <div className={classNames("omniCourse", customClassName)}>
-      <LearningContextProvider
-        taxonomyKeysFetcher={taxonomyKeysFetcher}
-        taxonomyRepository={taxonomyRepository}
-        onMobile={onMobile}
-      >
-        <Main
-          loadingNode={loadingNode}
-          taxonomySelectLabel={taxonomySelectLabel}
-          chartSettings={chartSettings}
-        />
-      </LearningContextProvider>
-    </div>
+}: OmniCourseProps) => {
+  const [taxonomyPreviews, setTaxonomyPreviews] = useState<
+    List.NonEmpty<TaxonomyPreview> | undefined
+  >(undefined);
+
+  useAsyncFetcher({
+    fetcher: taxonomyPreviewsFetcher,
+    onData: fetchedTaxonomyPreviews => {
+      TaxonomyPreview.validateCollection(fetchedTaxonomyPreviews);
+
+      const actualTaxonomyPreviews = List.from(
+        fetchedTaxonomyPreviews
+      ).assumeNonEmpty();
+
+      setTaxonomyPreviews(actualTaxonomyPreviews);
+    },
+    onError: err => {
+      console.error(err);
+      alert(`Cannot load the taxonomy previews. ${formatError(err)}`);
+    },
+    dependencies: [taxonomyPreviewsFetcher]
+  });
+
+  const dictionary = useMemo(
+    () =>
+      (dictionaryLibrary ?? DictionaryLibrary.empty()).getDictionary(locale),
+    [dictionaryLibrary, locale]
+  );
+
+  const translations = useMemo(
+    () => dictionary.toRawTranslations(),
+    [dictionary]
+  );
+
+  const taxonomyReifier = useBackgroundTaxonomyReifier(locale, translations);
+
+  return taxonomyPreviews && taxonomyReifier ? (
+    <LearningContextProvider
+      locale={locale}
+      dictionary={dictionary}
+      taxonomyReifier={taxonomyReifier}
+      onMobile={onMobile}
+      taxonomyPreviews={taxonomyPreviews}
+      rawTaxonomyFetcher={rawTaxonomyFetcher}
+    >
+      <Main
+        loadingNode={loadingNode}
+        taxonomySelectLabel={taxonomySelectLabel}
+        chartSettings={chartSettings}
+      />
+    </LearningContextProvider>
+  ) : (
+    <div className="loadingBox">loadingNode</div>
   );
 };
