@@ -63,6 +63,7 @@
     "html2canvas": "^1.4.1"
   },
   "devDependencies": {
+    "@giancosta86/more-jest": "^4.1.0",
     "@swc/core": "^1.3.72",
     "@swc/jest": "^0.2.27",
     "@types/d3-scale": "^4.0.2",
