@@ -1,4 +1,4 @@
-## Version 3
+# Version 3
 
 - the library is now based on ESM
 
@@ -15,3 +15,5 @@
 - CSS root is now named `index.css`
 
 - no more root div with `omniCourse` class (which still remains in the CSS); consequently, no more `customClassName` property
+
+- The `TaxonomyKey` struct no more exists - replaced by `TaxonomyId`, which is a plain `string` alias

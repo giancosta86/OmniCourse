@@ -30,6 +30,14 @@ For details about _installing and using OmniCourse_, please consult the [tutoria
 
 Alternatively, the lightweight kernel, focusing on just the core model - with no UI dependencies - is available as the [OmniCourse-core](https://github.com/giancosta86/OmniCourse-core) project.
 
+## New features in OmniCourse 3
+
+- **Localization** support - to translate taxonomy names and subject names
+
+- **WebWorker** taxonomy reifier - to run _background localization and reification_ by default
+
+- Totally rewritten, leaner and more _functional_ TypeScript engine
+
 ## New features in OmniCourse 2
 
 - _Well-defined model_ written in **TypeScript**, with remarkably high **test coverage** on the model
