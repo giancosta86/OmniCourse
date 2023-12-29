@@ -12,9 +12,7 @@ export const useBackgroundTaxonomyReifier = (
   >(undefined);
 
   useEffect(() => {
-    const taxonomyWorker = new Worker(
-      new URL("./taxonomy.worker", import.meta.url)
-    );
+    const taxonomyWorker = new Worker(new URL("./worker", import.meta.url));
 
     const workerBasedReifier = WorkerBasedReifier.create(
       taxonomyWorker,

@@ -34,7 +34,7 @@ Alternatively, the lightweight kernel, focusing on just the core model - with no
 
 - **Localization** support - to translate taxonomy names and subject names
 
-- **WebWorker** taxonomy reifier - to run _background localization and reification_ by default
+- **WebWorker** taxonomy reifier - to run _background localization and reification_ - enabled by default
 
 - Totally rewritten, leaner and more _functional_ TypeScript engine
 

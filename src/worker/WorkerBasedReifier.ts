@@ -4,7 +4,7 @@ import {
   TaxonomyReifier,
   RawTaxonomy
 } from "@giancosta86/omnicourse-core";
-import { MessageFromWorker, MessageToWorker } from "./protocol";
+import { WorkerResponse, WorkerRequest } from "./protocol";
 
 export namespace WorkerBasedReifier {
   export function create(
@@ -18,9 +18,7 @@ export namespace WorkerBasedReifier {
       new Promise<Taxonomy>((resolve, reject) => {
         const thisCorrelationid = nextCorrelationId++;
 
-        const responseEventHandler = (
-          event: MessageEvent<MessageFromWorker>
-        ) => {
+        const responseEventHandler = (event: MessageEvent<WorkerResponse>) => {
           const responseMessage = event.data;
 
           if (responseMessage.correlationId != thisCorrelationid) {
@@ -30,8 +28,10 @@ export namespace WorkerBasedReifier {
           backingWorker.removeEventListener("message", responseEventHandler);
 
           switch (responseMessage.type) {
-            case "taxonomyReady": {
-              const taxonomy = Taxonomy.fromJson(responseMessage.taxonomyJson);
+            case "taxonomyJsonReady": {
+              const taxonomy = Taxonomy.fromValidJson(
+                responseMessage.taxonomyJson
+              );
               return resolve(taxonomy);
             }
 
@@ -42,9 +42,9 @@ export namespace WorkerBasedReifier {
 
         backingWorker.addEventListener("message", responseEventHandler);
 
-        const requestMessage: MessageToWorker = {
+        const requestMessage: WorkerRequest = {
           correlationId: thisCorrelationid,
-          type: "prepareTaxonomy",
+          type: "prepareTaxonomyJson",
           locale: LocaleLike.toLanguageTag(locale),
           translations,
           rawTaxonomy

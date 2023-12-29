@@ -12,7 +12,8 @@ module.exports = {
     node: true
   },
   rules: {
-    "@typescript-eslint/no-namespace": "off"
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   settings: {
     react: {

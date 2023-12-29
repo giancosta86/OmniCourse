@@ -5,17 +5,17 @@ type WithCorrelationId = Readonly<{
   correlationId: bigint;
 }>;
 
-export type MessageToWorker = Readonly<{
-  type: "prepareTaxonomy";
+export type WorkerRequest = Readonly<{
+  type: "prepareTaxonomyJson";
   locale: Intl.BCP47LanguageTag;
   translations: TranslationsByPhrase;
   rawTaxonomy: RawTaxonomy;
 }> &
   WithCorrelationId;
 
-export type MessageFromWorker = Readonly<
+export type WorkerResponse = Readonly<
   | {
-      type: "taxonomyReady";
+      type: "taxonomyJsonReady";
       taxonomyJson: TaxonomyJson;
     }
   | {
