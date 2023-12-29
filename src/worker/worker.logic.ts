@@ -62,9 +62,9 @@ function prepareTaxonomyJson({
   dictionary,
   rawTaxonomy
 }: PreparationParams): TaxonomyJson {
-  const localizedRawTaxonomy = RawTaxonomy.localize(dictionary, rawTaxonomy);
+  const translatedRawTaxonomy = RawTaxonomy.translate(dictionary, rawTaxonomy);
 
-  const taxonomy = RawTaxonomy.reify(locale, localizedRawTaxonomy);
+  const taxonomy = RawTaxonomy.reify(locale, translatedRawTaxonomy);
 
   return TaxonomyJson.from(taxonomy);
 }
