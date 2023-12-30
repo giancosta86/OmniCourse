@@ -16,41 +16,39 @@ export namespace WorkerBasedReifier {
 
     return (rawTaxonomy: RawTaxonomy) =>
       new Promise<Taxonomy>((resolve, reject) => {
-        const thisCorrelationid = nextCorrelationId++;
+        const correlationId = nextCorrelationId++;
 
         const responseEventHandler = (event: MessageEvent<WorkerResponse>) => {
-          const responseMessage = event.data;
+          const response = event.data;
 
-          if (responseMessage.correlationId != thisCorrelationid) {
+          if (response.correlationId != correlationId) {
             return;
           }
 
           backingWorker.removeEventListener("message", responseEventHandler);
 
-          switch (responseMessage.type) {
+          switch (response.type) {
             case "taxonomyJsonReady": {
-              const taxonomy = Taxonomy.fromValidJson(
-                responseMessage.taxonomyJson
-              );
+              const taxonomy = Taxonomy.fromValidJson(response.taxonomyJson);
               return resolve(taxonomy);
             }
 
             case "taxonomyError":
-              return reject(responseMessage.errorMessage);
+              return reject(response.errorMessage);
           }
         };
 
         backingWorker.addEventListener("message", responseEventHandler);
 
-        const requestMessage: WorkerRequest = {
-          correlationId: thisCorrelationid,
+        const request: WorkerRequest = {
+          correlationId,
           type: "prepareTaxonomyJson",
           locale: LocaleLike.toLanguageTag(locale),
           translations,
           rawTaxonomy
         };
 
-        backingWorker.postMessage(requestMessage);
+        backingWorker.postMessage(request);
       });
   }
 }

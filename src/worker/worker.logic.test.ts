@@ -45,7 +45,7 @@ describe("Processing a request", () => {
         fail();
       }
 
-      expect(response.correlationId).toBe(90n);
+      expect(response.correlationId).toBe(request.correlationId);
 
       expect(response.errorMessage).toBe(
         "Missing 'minutes' field in work 'Sample Work'"
@@ -53,9 +53,9 @@ describe("Processing a request", () => {
     });
   });
 
-  describe("when passing a correct raw taxonomy", () => {
-    describe("when skipping localization", () => {
-      it("should return a message with the correct JSON", () => {
+  describe("when passing a valid raw taxonomy", () => {
+    describe("when not requesting translations", () => {
+      it("should return a message with the returned JSON", () => {
         const request: WorkerRequest = {
           correlationId: 80n,
           type: "prepareTaxonomyJson",
@@ -94,7 +94,7 @@ describe("Processing a request", () => {
           fail();
         }
 
-        expect(response.correlationId).toBe(80n);
+        expect(response.correlationId).toBe(request.correlationId);
 
         expect(response.taxonomyJson).toEqual(
           TaxonomyJson.from(
@@ -103,6 +103,68 @@ describe("Processing a request", () => {
                 Subject.create("Gamma", [Work.create("Ipsilon", 498)]),
 
                 Subject.create("Beta", [
+                  Work.create("Tau", 95),
+                  Work.create("Sigma", 92)
+                ])
+              ])
+            ])
+          )
+        );
+      });
+    });
+
+    describe("when requesting translation via a dictionary", () => {
+      it("should return a message with the returned JSON", () => {
+        const request: WorkerRequest = {
+          correlationId: 150n,
+          type: "prepareTaxonomyJson",
+          locale: "en",
+          translations: {
+            Alpha: "A",
+            Beta: "B"
+          },
+          rawTaxonomy: {
+            name: "My taxonomy",
+            rootSubjects: {
+              Alpha: {
+                Beta: [
+                  {
+                    title: "Sigma",
+                    minutes: 92
+                  },
+
+                  {
+                    title: "Tau",
+                    minutes: 95
+                  }
+                ],
+
+                Gamma: [
+                  {
+                    title: "Ipsilon",
+                    minutes: 498
+                  }
+                ]
+              }
+            }
+          }
+        };
+
+        const response = processRequest(request);
+
+        if (response.type != "taxonomyJsonReady") {
+          fail();
+        }
+
+        expect(response.correlationId).toBe(request.correlationId);
+
+        expect(response.taxonomyJson).toEqual(
+          TaxonomyJson.from(
+            Taxonomy.create("My taxonomy", [
+              Subject.create("A", [
+                Subject.create("Gamma", [Work.create("Ipsilon", 498)]),
+
+                Subject.create("B", [
                   Work.create("Tau", 95),
                   Work.create("Sigma", 92)
                 ])
