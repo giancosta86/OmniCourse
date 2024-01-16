@@ -1,12 +1,12 @@
 import { TranslationsByPhrase } from "@giancosta86/hermes";
-import { RawTaxonomy, TaxonomyJson } from "@giancosta86/omnicourse-core";
+import { RawTaxonomy, TaxonomyDto } from "@giancosta86/omnicourse-core";
 
 type WithCorrelationId = Readonly<{
   correlationId: bigint;
 }>;
 
 export type WorkerRequest = Readonly<{
-  type: "prepareTaxonomyJson";
+  type: "prepareTaxonomyDto";
   locale: Intl.BCP47LanguageTag;
   translations: TranslationsByPhrase;
   rawTaxonomy: RawTaxonomy;
@@ -15,8 +15,8 @@ export type WorkerRequest = Readonly<{
 
 export type WorkerResponse = Readonly<
   | {
-      type: "taxonomyJsonReady";
-      taxonomyJson: TaxonomyJson;
+      type: "taxonomyDtoReady";
+      taxonomyDto: TaxonomyDto;
     }
   | {
       type: "taxonomyError";

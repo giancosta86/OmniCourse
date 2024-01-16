@@ -1,7 +1,7 @@
 import {
   Subject,
   Taxonomy,
-  TaxonomyJson,
+  TaxonomyDto,
   Work
 } from "@giancosta86/omnicourse-core";
 import { WorkerRequest } from "./protocol";
@@ -22,7 +22,7 @@ describe("Processing a request", () => {
     it("should return an error message", () => {
       const request: WorkerRequest = {
         correlationId: 90n,
-        type: "prepareTaxonomyJson",
+        type: "prepareTaxonomyDto",
         locale: "en",
         translations: {},
         rawTaxonomy: {
@@ -55,10 +55,10 @@ describe("Processing a request", () => {
 
   describe("when passing a valid raw taxonomy", () => {
     describe("when not requesting translations", () => {
-      it("should return a message with the returned JSON", () => {
+      it("should return a message with the returned dto", () => {
         const request: WorkerRequest = {
           correlationId: 80n,
-          type: "prepareTaxonomyJson",
+          type: "prepareTaxonomyDto",
           locale: "en",
           translations: {},
           rawTaxonomy: {
@@ -90,14 +90,14 @@ describe("Processing a request", () => {
 
         const response = processRequest(request);
 
-        if (response.type != "taxonomyJsonReady") {
+        if (response.type != "taxonomyDtoReady") {
           fail();
         }
 
         expect(response.correlationId).toBe(request.correlationId);
 
-        expect(response.taxonomyJson).toEqual(
-          TaxonomyJson.from(
+        expect(response.taxonomyDto).toEqual(
+          TaxonomyDto.from(
             Taxonomy.create("My taxonomy", [
               Subject.create("Alpha", [
                 Subject.create("Gamma", [Work.create("Ipsilon", 498)]),
@@ -114,10 +114,10 @@ describe("Processing a request", () => {
     });
 
     describe("when requesting translation via a dictionary", () => {
-      it("should return a message with the returned JSON", () => {
+      it("should return a message with the returned dto", () => {
         const request: WorkerRequest = {
           correlationId: 150n,
-          type: "prepareTaxonomyJson",
+          type: "prepareTaxonomyDto",
           locale: "en",
           translations: {
             Alpha: "A",
@@ -152,14 +152,14 @@ describe("Processing a request", () => {
 
         const response = processRequest(request);
 
-        if (response.type != "taxonomyJsonReady") {
+        if (response.type != "taxonomyDtoReady") {
           fail();
         }
 
         expect(response.correlationId).toBe(request.correlationId);
 
-        expect(response.taxonomyJson).toEqual(
-          TaxonomyJson.from(
+        expect(response.taxonomyDto).toEqual(
+          TaxonomyDto.from(
             Taxonomy.create("My taxonomy", [
               Subject.create("A", [
                 Subject.create("Gamma", [Work.create("Ipsilon", 498)]),

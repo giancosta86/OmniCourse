@@ -4,11 +4,12 @@ import {
   TaxonomyReifier,
   RawTaxonomy
 } from "@giancosta86/omnicourse-core";
+import { WorkerFacade } from "@giancosta86/worker-facade";
 import { WorkerResponse, WorkerRequest } from "./protocol";
 
 export namespace WorkerBasedReifier {
   export function create(
-    backingWorker: Worker,
+    backingWorker: WorkerFacade,
     locale: LocaleLike,
     translations: TranslationsByPhrase
   ): TaxonomyReifier {
@@ -28,8 +29,8 @@ export namespace WorkerBasedReifier {
           backingWorker.removeEventListener("message", responseEventHandler);
 
           switch (response.type) {
-            case "taxonomyJsonReady": {
-              const taxonomy = Taxonomy.fromValidJson(response.taxonomyJson);
+            case "taxonomyDtoReady": {
+              const taxonomy = Taxonomy.fromValidDto(response.taxonomyDto);
               return resolve(taxonomy);
             }
 
@@ -42,7 +43,7 @@ export namespace WorkerBasedReifier {
 
         const request: WorkerRequest = {
           correlationId,
-          type: "prepareTaxonomyJson",
+          type: "prepareTaxonomyDto",
           locale: LocaleLike.toLanguageTag(locale),
           translations,
           rawTaxonomy

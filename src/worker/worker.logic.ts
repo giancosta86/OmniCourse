@@ -1,14 +1,14 @@
 import { HashMap } from "@rimbu/hashed";
 import { Dictionary, LocaleLike } from "@giancosta86/hermes";
-import { RawTaxonomy, TaxonomyJson } from "@giancosta86/omnicourse-core";
+import { RawTaxonomy, TaxonomyDto } from "@giancosta86/omnicourse-core";
 import { ErrorParts, formatError } from "@giancosta86/format-error";
 import { WorkerResponse, WorkerRequest } from "./protocol";
 
 type RequestProcessor = (request: WorkerRequest) => WorkerResponse;
 
 const requestProcessors = HashMap.of<WorkerRequest["type"], RequestProcessor>([
-  "prepareTaxonomyJson",
-  processPrepareTaxonomyJson
+  "prepareTaxonomyDto",
+  processPrepareTaxonomyDto
 ]);
 
 export function processRequest(request: WorkerRequest): WorkerResponse {
@@ -20,18 +20,18 @@ export function processRequest(request: WorkerRequest): WorkerResponse {
   return processor(request);
 }
 
-function processPrepareTaxonomyJson({
+function processPrepareTaxonomyDto({
   correlationId,
   locale,
   translations,
   rawTaxonomy
-}: WorkerRequest & { type: "prepareTaxonomyJson" }): WorkerResponse & {
-  type: "taxonomyJsonReady" | "taxonomyError";
+}: WorkerRequest & { type: "prepareTaxonomyDto" }): WorkerResponse & {
+  type: "taxonomyDtoReady" | "taxonomyError";
 } {
   const dictionary = Dictionary.fromRawTranslations(translations);
 
   try {
-    const taxonomyJson = prepareTaxonomyJson({
+    const taxonomyDto = prepareTaxonomyDto({
       locale,
       dictionary,
       rawTaxonomy
@@ -39,8 +39,8 @@ function processPrepareTaxonomyJson({
 
     return {
       correlationId,
-      type: "taxonomyJsonReady",
-      taxonomyJson
+      type: "taxonomyDtoReady",
+      taxonomyDto
     };
   } catch (err) {
     return {
@@ -57,14 +57,14 @@ type PreparationParams = {
   rawTaxonomy: RawTaxonomy;
 };
 
-function prepareTaxonomyJson({
+function prepareTaxonomyDto({
   locale,
   dictionary,
   rawTaxonomy
-}: PreparationParams): TaxonomyJson {
+}: PreparationParams): TaxonomyDto {
   const translatedRawTaxonomy = RawTaxonomy.translate(dictionary, rawTaxonomy);
 
   const taxonomy = RawTaxonomy.reify(locale, translatedRawTaxonomy);
 
-  return TaxonomyJson.from(taxonomy);
+  return TaxonomyDto.from(taxonomy);
 }
