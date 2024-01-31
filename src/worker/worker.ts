@@ -1,10 +1,4 @@
-import { WorkerRequest } from "./protocol";
-import { processRequest } from "./worker.logic";
+import { main } from "./worker.logic";
+import { RequestListener } from "@giancosta86/worker-facade";
 
-self.addEventListener("message", event => {
-  const request = event.data as WorkerRequest;
-
-  const response = processRequest(request);
-
-  self.postMessage(response);
-});
+RequestListener.register(self, main);

@@ -1,12 +1,21 @@
 import { HashMap } from "@rimbu/hashed";
+import { RequestListener } from "@giancosta86/worker-facade";
 import { Dictionary, LocaleLike } from "@giancosta86/hermes";
 import { RawTaxonomy, TaxonomyDto } from "@giancosta86/omnicourse-core";
 import { ErrorParts, formatError } from "@giancosta86/format-error";
 import { WorkerResponse, WorkerRequest } from "./protocol";
 
-type RequestProcessor = (request: WorkerRequest) => WorkerResponse;
+export const main: RequestListener<WorkerRequest, WorkerResponse> = (
+  request,
+  sendResponse
+) => {
+  const response = processRequest(request);
+  sendResponse(response);
+};
 
-const requestProcessors = HashMap.of<WorkerRequest["type"], RequestProcessor>([
+type RequestTransform = (request: WorkerRequest) => WorkerResponse;
+
+const requestProcessors = HashMap.of<WorkerRequest["type"], RequestTransform>([
   "prepareTaxonomyDto",
   processPrepareTaxonomyDto
 ]);
