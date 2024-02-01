@@ -55,7 +55,7 @@
     "@giancosta86/omnicourse-core": "link:../OmniCourse-core",
     "@giancosta86/stream-utils": "^2.2.0",
     "@giancosta86/time-utils": "^5.0.0",
-    "@giancosta86/worker-facade": "link:../worker-facade/",
+    "@giancosta86/worker-facade": "^1.0.0",
     "@rimbu/collection-types": "^1.1.1",
     "@rimbu/hashed": "^1.1.0",
     "@rimbu/list": "^1.1.0",
@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@giancosta86/more-jest": "^4.1.0",
-    "@giancosta86/worker-mock": "link:../worker-mock",
+    "@giancosta86/worker-mock": "^1.0.0",
     "@swc/core": "^1.3.72",
     "@swc/jest": "^0.2.27",
     "@types/d3-scale": "^4.0.2",
